@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+<title>Emp Manage</title>
+<link rel="stylesheet" href="css/bootstrap.min.css" />
+<link rel="stylesheet" href="css/Emp_manage.css" />
+<script type="text/javascript" src="js/jquery-2.1.0.js"></script>
+<script type="text/javascript" src="js/bootstrap.js"></script>
+</head>
+
+<body style="background-image: url(img/qiu.jpg);">
+	<!--
+        	作者：offline
+        	时间：2018-10-20
+        	描述：统计分析
+        -->
+
+	<!--
+        	作者：offline
+        	时间：2018-10-20
+        	描述：导航条开始
+        -->
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+					aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">Neuedu</a>
+			</div>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse"
+				id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+					<li><a href="Neuedu_Home.html">Home</a></li>
+					<li><a href="Clock_in.html">打卡</a></li>
+					<li class="active"><a href="Emp_manage.html">用户管理</a></li>
+					<li class="dropdown "><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown" role="button" aria-haspopup="true"
+						aria-expanded="false">考勤管理 <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+
+							<li><a href="Ask_For_Leave_approval.html">请假审批</a></li>
+							<li><a href="Retroactive_approval.html">补签审批</a></li>
+							<li role="separator" class="divider"></li>
+							<li><a href="statistical_analysis.html">统计分析</a></li>
+							<!--<li role="separator" class="divider"></li>
+								<li>
+									<a href="#">One more separated link</a>
+								</li>-->
+						</ul></li>
+				</ul>
+				<form class="navbar-form navbar-left">
+					<div class="form-group">
+						<input type="text" class="form-control" placeholder="Search">
+					</div>
+					<button type="submit" class="btn btn-default">Submit</button>
+
+				</form>
+
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="#">欢迎</a></li>
+					<li><a href="NeueduSign_Up.html">Eale</a></li>
+
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown" role="button" aria-haspopup="true"
+						aria-expanded="false">Dropdown <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="#">Action</a></li>
+							<li><a href="#">Another action</a></li>
+							<li><a href="#">Something else here</a></li>
+							<li role="separator" class="divider"></li>
+							<li><a href="#">Separated link</a></li>
+						</ul></li>
+				</ul>
+			</div>
+			<!-- /.navbar-collapse -->
+		</div>
+		<!-- /.container-fluid -->
+	</nav>
+	<!--
+        	作者：offline
+        	时间：2018-10-20
+        	描述：导航条结束
+        -->
+
+	<div class="content">
+		<div class="left"></div>
+		<div class="right">
+
+			<div class="reminder">
+				<span> 工号表</span> <input type="button" value="按部门查看" />
+
+			</div>
+			<div class="thing">
+				<div class="table-responsive table table-hover"
+					style="width: 850px;">
+					<table class="table" id="accountinfos">
+						<!-- On rows -->
+						<tr class="active">
+							<th class="active">Neu_EmpNo</th>
+							<th class="success">Neu_pwd</th>
+							<th class="warning">Neu_power_level</th>
+							<th class="info">操作</th>
+						</tr>
+
+
+					</table>
+					<table class="accountinfo" hidden>
+						<tr class="success addline" id="empInfo">
+							<td class="active">$Neu_EmpNo</td>
+							<td class="success">$Neu_pwd</td>
+							<td class="warning">$Neu_power_level</td>
+							<td class="info">
+								<button type="button" class="btn btn-info viewacc"
+									data-toggle="modal" data-target="#exampleModal1" >查看</button>
+								<button fid=$ID type="button" class="btn btn-warning updadaacc"
+									data-toggle="modal" data-target="#exampleModal1" >修改</button>
+								<button Did=$ID type="button" class="btn btn-danger deleteacc">删除</button>
+								
+
+								<div class="modal fade" id="exampleModal1" tabindex="-1"
+									role="dialog" aria-labelledby="exampleModalLabel">
+									<div class="modal-dialog" role="document">
+										<div class="modal-content">
+										<form id="updateaccount" action="manageAccountServlet.action" method="POST">
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal"
+													aria-label="Close">
+													<span aria-hidden="true">&times;</span>
+												</button>
+												<h4 class="modal-title" id="exampleModalLabel">个人信息</h4>
+											</div>
+											<div class="modal-body">
+												
+													<div class="form-group">
+														<label for="recipient-name" class="control-label">Neu_Account:</label>
+														<input name="updateneu_account" type="text" class="form-control">
+														<br /> <label for="recipient-name" class="control-label">Neu_PassWord:</label>
+														<input name="updateneu_password" type="password"
+															class="form-control" id=""> <br /> <label
+															for="recipient-name" class="control-label">Neu_POWER_level:</label>
+														<input name="updatwneu_power_level" type="text"
+															class="form-control" id="">
+													</div>
+
+												
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-default"
+													data-dismiss="modal">Close</button>
+												<button type="submit" class="btn btn-primary">Send
+													message</button>
+											</div>
+											</form>
+										</div>
+									</div>
+								</div>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+				<div>
+					<button type="button" class="btn btn-info" style="margin:-200px 100px 0 750px">导出</button>
+					<button type="button" class="btn btn-success" data-toggle="modal"
+						data-target="#exampleModal3" style="margin-top: -200px;">增加</button>
+					<div class="modal fade" id="exampleModal3" tabindex="-1"
+						role="dialog" aria-labelledby="exampleModalLabel">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+							<form id="addaccount" action="manageAccountServlet.action" method="POST">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal"
+										aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+									<h4 class="modal-title" id="exampleModalLabel">个人信息</h4>
+								</div>
+								<div class="modal-body">
+									
+										<div class="form-group">
+											<label for="recipient-name" class="control-label">Neu_Account:</label>
+											<input name="addneuaccount" type="text" class="form-control"> <br /> <label
+												for="recipient-name" class="control-label">Neu_PassWord:</label>
+											<input name="addneupassword" type="password" class="form-control" id=""> <br />
+											<label for="recipient-name" class="control-label">Neu_POWER_level:</label>
+											<input name="addneupowerlevel" type="text" class="form-control" id="">
+										</div>
+
+									
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default"
+										data-dismiss="modal">Close</button>
+									<button type="submit" class="btn btn-primary">Send
+										message</button>
+								</div>
+							</form>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+				
+			
+			
+			<nav aria-label="Page navigation" style="margin: -150px 0px 0px 440px;">
+							<ul class="pagination">
+								<li>
+									<a href="#" aria-label="Previous">
+										<span aria-hidden="true">&laquo;</span>
+									</a>
+								</li>
+								<li>
+									<a id="account_1" href="#">1</a>
+								</li>
+								<li>
+									<a id="account_2" href="#">2</a>
+								</li>
+								<li>
+									<a id="account_3" href="#">3</a>
+								</li>
+								<li>
+									<a id="account_4" href="#">4</a>
+								</li>
+								<li>
+									<a id="account_5" href="#">5</a>
+								</li>
+								<li>
+									<a href="#" aria-label="Next">
+										<span aria-hidden="true">&raquo;</span>
+									</a>
+								</li>
+							</ul>
+						</nav>
+			
+			<div class="reminder">
+				<span>信息表</span> <input type="button" value="按部门查看" />
+
+			</div>
+			<div class="thing">
+
+				<div class="table-responsive table table-hover"
+					style="width: 850px;">
+					<table class="table" id="empInfos">
+						<!-- On rows -->
+						<tr class="active">
+							<th class="active">Neu_ID</th>
+							<th class="success">Neu_name</th>
+							<th class="warning">Neu_email</th>
+							<th class="danger">Neu_tel</th>
+							<th class="info">Neu_addre</th>
+							<th class="warning">Neu_age</th>
+							<th class="danger">Neu_gender</th>
+							<th class="info">Neu_empno</th>
+							<th class="info">操作</th>
+						</tr>
+					</table>
+					<table class="empInfo" hidden>
+						<tr class="success addline">
+							<td class="active">$ID</td>
+							<td class="success">$NAME</td>
+							<td class="warning">$EMAIL</td>
+							<td class="danger">$TEL</td>
+							<td class="info">$ADDRE</td>
+							<td class="warning">$AGE</td>
+							<td class="danger">$GENDER</td>
+							<td class="info">$EMPNO</td>
+							<td class="info">
+								
+								<button type="button" class="btn btn-info updateemp"
+									data-toggle="modal" data-target="#exampleModal2" up_id=$ID>查看</button>
+								<button type="button" class="btn btn-warning updateemp"
+									data-toggle="modal" data-target="#exampleModal2" up_id=$ID>修改</button>
+								<button type="button" class="btn btn-danger deleteemp" de_id=$ID>删除</button>
+
+
+
+								<div class="modal fade" id="exampleModal2" tabindex="-1"
+									role="dialog" aria-labelledby="exampleModalLabel">
+									<div class="modal-dialog" role="document">
+										<div class="modal-content">
+										<form id="updateemp" action="manageUserServlet.action"
+													method="POST">
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal"
+													aria-label="Close">
+													<span aria-hidden="true">&times;</span>
+												</button>
+												<h4 class="modal-title" id="exampleModalLabel">个人信息</h4>
+											</div>
+											<div class="modal-body">
+												
+													<div class="form-group">
+														<label for="recipient-name" class="control-label">Neu_Name:</label>
+														<input name="updateempname" type="text" class="form-control"> <br /> <label
+															for="recipient-name" class="control-label">Neu_Email:</label>
+														<input name="updateempemail" type="text" class="form-control"
+															id=""> <br /> <label
+															for="recipient-name" class="control-label">Neu_Tel:</label>
+														<input name="updateemptel" type="text" class="form-control"
+															id=""> <br /> <label
+															for="recipient-name" class="control-label">Neu_addre:</label>
+														<input name="updateempaddre" type="text" class="form-control"
+															id=""> <br /> <label
+															for="recipient-name" class="control-label">Neu_age:</label>
+														<input name="updateempage" type="text" class="form-control"
+															id=""> <br /> <label
+															for="message-text" class="control-label">Neu_Sex:</label>
+														<input name="updateempsex" type="text" class="form-control" id=""> <br />
+														<label for="message-text" class="control-label">Neu_empno:</label>
+														<input name="updateempno" type="text" class="form-control" id="">
+													</div>
+
+
+												
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-default"
+													data-dismiss="modal">Close</button>
+												<button type="submit" class="btn btn-primary">Send
+													message</button>
+											</div>
+											</form>
+										</div>
+										
+									</div>
+								</div>
+							</td>
+						</tr>
+					</table>
+				</div>
+
+			</div>
+				<div>
+					<button type="button" class="btn btn-info" style="margin:-132px 100px auto 750px">导出</button>
+					<button type="button" class="btn btn-success" data-toggle="modal"
+						data-target="#exampleModal5" style="margin-top: -132px;">增加</button>
+					<div class="modal fade" id="exampleModal5" tabindex="-1"
+						role="dialog" aria-labelledby="exampleModalLabel">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+							<form id="addemp" action="manageUserServlet.action" method="POST">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal"
+										aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+									<h4 class="modal-title" id="exampleModalLabel">个人信息</h4>
+								</div>
+								<div class="modal-body">
+									
+										<div class="form-group">
+											<label for="recipient-name" class="control-label">Neu_Name:</label>
+											<input type="text" class="form-control"> <br /> <label
+												for="recipient-name" class="control-label">Neu_Email:</label>
+											<input type="text" class="form-control" id=""> <br />
+											<label for="recipient-name" class="control-label">Neu_Tel:</label>
+											<input type="text" class="form-control" id=""> <br />
+											<label for="recipient-name" class="control-label">Neu_addre:</label>
+											<input type="text" class="form-control" id=""> <br />
+											<label for="recipient-name" class="control-label">Neu_age:</label>
+											<input type="text" class="form-control" id=""> <br />
+											<label for="message-text" class="control-label">Neu_Sex:</label>
+											<input type="text" class="form-control" id=""> <br />
+											<label for="message-text" class="control-label">Neu_empno:</label>
+											<input type="text" class="form-control" id="">
+										</div>
+
+									
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default"
+										data-dismiss="modal">Close</button>
+									<button type="submit" class="btn btn-primary">Send
+										message</button>
+								</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			
+			
+			<nav aria-label="Page navigation" style="margin: -115px 0px 0px 440px;">
+							<ul class="pagination">
+								<li>
+									<a href="#" aria-label="Previous">
+										<span aria-hidden="true">&laquo;</span>
+									</a>
+								</li>
+								<li>
+									<a id="emp_1" href="#">1</a>
+								</li>
+								<li>
+									<a id="emp_2" href="#">2</a>
+								</li>
+								<li>
+									<a id="emp_3" href="#">3</a>
+								</li>
+								<li>
+									<a id="emp_4" href="#">4</a>
+								</li>
+								<li>
+									<a id="emp_5" href="#">5</a>
+								</li>
+								<li>
+									<a href="#" aria-label="Next">
+										<span aria-hidden="true">&raquo;</span>
+									</a>
+								</li>
+							</ul>
+						</nav>
+		</div>
+	</div>
+
+</body>
+<script type="text/javascript" src="js/EmpManager.js"></script>
+</html>

@@ -1,0 +1,23 @@
+body{
+	margin: 0;
+	padding:0 ;
+	width: 1350px;
+	height: 670px;
+}
+.content{
+	margin-top: -20px;
+}
+.left{
+	
+	width: 158px;
+	height: 670px;
+	
+	float: left;
+}
+.right{
+	
+	width: 1192px;
+	height: 670px;
+	
+	float: left;
+}

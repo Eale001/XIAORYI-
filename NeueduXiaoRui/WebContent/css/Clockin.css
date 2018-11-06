@@ -1,0 +1,58 @@
+body{
+	margin: 0;
+	padding:0 ;
+	width: 1350px;
+	height: 670px;
+}
+.content{
+	margin-top: -20px;
+}
+.left{
+	
+	width: 158px;
+	height: 670px;
+	
+	float: left;
+}
+.right{
+	
+	width: 1192px;
+	height: 670px;
+	
+	float: left;
+}
+.right button{
+	margin: 440px 0px 0px -193px;
+}
+.reminder{
+	width: 300px;
+	height: 300px;
+	
+	/*margin: 150px auto auto;*/
+	background: url(../img/wen9.jpg) ;
+	float: left;
+	margin-left: 225px;
+	margin-top: 200px;
+}
+.reminder span{
+	color: white;
+	margin-left: 200px;
+	height: 100px;
+	width: 20px;
+	line-height: 50px;
+}
+.thing{
+	width: 300px;
+	height: 300px;
+	
+	/*margin: 0 auto;*/
+	background: url(../img/wen10.jpg);
+	float: left;
+	margin-top: 200px;
+}
+.thing span{
+	color: white;
+	line-height: 75px;
+	font-size: 29px;
+	margin: 0px 23px 0px 7px;
+}

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>Account Login</title>
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
+		<script type="text/javascript" src="js/jquery-2.1.0.js"></script>
+		<script type="text/javascript" src="js/bootstrap.js"></script>
+	</head>
+
+	<body style="background-image: url(img/qiu8.jpg);">
+		<!--
+        	作者：offline
+        	时间：2018-10-19
+        	描述：
+        -->
+		<!-- Button trigger modal -->
+		<!--
+        	作者：offline
+        	时间：2018-10-20
+        	描述：导航条开始
+        -->
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        				<span class="sr-only">Toggle navigation</span>
+        				<span class="icon-bar"></span>
+       					<span class="icon-bar"></span>
+        				<span class="icon-bar"></span>
+      				</button>
+					<a class="navbar-brand" href="#">Neuedu</a>
+				</div>
+
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav">
+						<li class="active">
+							<a href="#">Sign up </a>
+						</li>
+						<!--<li>
+							<a href="#">sign up </a>
+						</li>
+						<li>
+							<a href="#">Link</a>
+						</li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li>
+									<a href="#">Action</a>
+								</li>
+								<li>
+									<a href="#">Another action</a>
+								</li>
+								<li>
+									<a href="#">Something else here</a>
+								</li>
+								<li role="separator" class="divider"></li>
+								<li>
+									<a href="#">Separated link</a>
+								</li>
+								<li role="separator" class="divider"></li>
+								<li>
+									<a href="#">One more separated link</a>
+								</li>
+							</ul>
+						</li>-->
+					</ul>
+					<form class="navbar-form navbar-left">
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="Search">
+						</div>
+						<button type="submit" class="btn btn-default">Submit</button>
+					</form>
+
+					<ul class="nav navbar-nav navbar-right">
+						<li>
+							<a href="#">Sign in</a>
+						</li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li>
+									<a href="#">Action</a>
+								</li>
+								<li>
+									<a href="#">Another action</a>
+								</li>
+								<li>
+									<a href="#">Something else here</a>
+								</li>
+								<li role="separator" class="divider"></li>
+								<li>
+									<a href="#">Separated link</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+				<!-- /.navbar-collapse -->
+			</div>
+			<!-- /.container-fluid -->
+		</nav>
+		<!--
+        	作者：offline
+        	时间：2018-10-20
+        	描述：导航条结束
+        -->
+		<!--<nav class="navbar navbar-inverse">
+			<ul class="nav nav-tabs nav-justified">
+				<li role="presentation" class="active">
+					<a href="#">Home</a>
+				</li>
+				<li role="presentation">
+					<a href="#">Profile</a>
+				</li>
+				<li role="presentation">
+					<a href="#">Messages</a>
+				</li>
+			</ul>
+			<!--<ul class="nav nav-pills">
+				<li role="presentation" class="active">
+					<a href="#">Home</a>
+				</li>
+				<li role="presentation">
+					<a href="#">Profile</a>
+				</li>
+				<li role="presentation">
+					<a href="#">Messages</a>
+				</li>
+			</ul>-->
+		</nav>-->
+		
+		<!--
+        	作者：offline
+        	时间：2018-10-20
+        	描述：欢迎简介开始
+        -->
+		<div class="col-md-7 text-center text-md-left " style="width: 350px;color: #fff;margin: 120px 130px;">
+			<h1 class="h000-mktg text-white lh-condensed-ultra mb-3" style="height: 98px;font-size: 47px;">Built for Teachers</h1>
+			<p class="lead-mktg mb-4">
+				Neuedu is for teacher to prepare to deal with related matters 
+				<a href="/open-source" >clock in</a> and
+				<a href="/business" >dealing something</a>, you can manage student, ask for leave, and check the students' learning and sign-in status 
+			</p>
+		</div>
+		<!--
+        	作者：offline
+        	时间：2018-10-20
+        	描述：欢迎简介结束
+        -->
+		
+		
+		<!--
+        	作者：offline
+        	时间：2018-10-20
+        	描述：登录表单开始
+        -->
+		<div class="rounded-1 text-gray bg-gray-light py-4 px-4 px-md-3 px-lg-4">
+			<form class="home-hero-signup js-signup-form" autocomplete="off" action="managerLoginServlet" accept-charset="UTF-8" method="post" style="width: 350px;color: #ffffff;margin: 60px 875px;">
+				<input name="utf8" value="✓" type="hidden">
+				<input name="authenticity_token" value="ZeZmVlFUwzPXYUlcvUGk2IBzeDgi87sXJ5AYP4a2gJyRrtTFshW/N431XowU2rqk32llq0ODzw3rYMM7ai9TMg==" type="hidden">
+				<dl class="form-group mt-0">
+					<dt class="input-label">
+                  <label class="form-label f5" for="user[login]" style="height: 35px;">Username</label>
+               </dt>
+					<dd>
+						<auto-check src="/signup_check/username" csrf="oVXD2chQhgJb5ilRYQjstlh2zf1hwGsQbVXKXXzPUERNI8fRUyrd3fr9bIOjCIsBzpSyjE8tyl5aWituCUibvA==">
+							<input name="user[login]" id="user[login]" class="form-control form-control-lg input-block" placeholder="Pick a username" autofocus="" autocomplete="off" spellcheck="false" type="text">
+						</auto-check>
+					</dd>
+				</dl>
+				<!--<dl class="form-group">
+					<dt class="input-label">
+                  <label class="form-label f5" for="user[email]" style="height: 35px;">Email</label>
+                </dt>
+					<dd>
+						<auto-check src="/signup_check/email" csrf="HT4p87J8A0iVJB9E3wMKBe+QIUsNc4BxYn6qLtrIVF4UnOvpZVxUQJiSEI16Z3qof6rWPePzATo0EIzP7hL/rQ==">
+							<input name="user[email]" id="user[email]" class="form-control form-control-lg input-block js-email-notice-trigger" placeholder="you@example.com" autocomplete="off" spellcheck="false" type="text">
+						</auto-check>
+					</dd>
+				</dl>-->
+				<password-strength data-minimum-character-count="7" data-beginning-of-sentence="Make sure it's" data-checks="[&quot;more than 15 characters&quot;, &quot;or at least 7 characters&quot;, &quot;including a number&quot;, &quot;a lowercase letter&quot;]">
+					<dl class="form-group">
+						<dt class="input-label">
+                    <label class="form-label f5" for="user[password]" style="height: 35px;">Password</label>
+                  </dt>
+						<dd>
+							<input name="user[password]" id="user[password]" class="form-control form-control-lg input-block" placeholder="Create a password" type="password">
+						</dd>
+						<p class="form-control-note">Make sure it's more than 15 characters, or at least 7 characters, including a number, and a lowercase letter.</p>
+					</dl>
+				</password-strength>
+				<input name="source" class="js-signup-source" value="form-home" type="hidden">
+				<input name="required_field_5265" id="required_field_5265" class="form-control" type="text" style="display: none;">
+				<input name="timestamp" value="1539968353328" class="form-control" type="hidden">
+				<input name="timestamp_secret" value="6bde133c425dbb776664d1c409099079831f8cd6cee789025a6f06e10e07b245" class="form-control" type="hidden">
+
+				<button class="btn-mktg btn-primary-mktg btn-large-mktg f4 btn-block" type="submit" data-ga-click="Signup, Attempt, location:teams;" style="height: 50px;background-color: #666;">Sign up for Neuedu</button>
+				<p class="form-control-note mb-0 text-center">
+					By clicking “Sign up for Neuedu”, you agree to our
+					<a class="" href="#" target="_blank">terms of service</a> and
+					<a class="" href="#" target="_blank">privacy statement</a>. <span class="js-email-notice">We’ll occasionally send you account related emails.</span>
+				</p>
+
+			</form>
+		</div>
+		<!--
+        	作者：offline
+        	时间：2018-10-20
+        	描述：登录表单结束
+        -->
+
+	</body>
+
+</html>
