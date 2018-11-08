@@ -6,9 +6,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.neuedu.XiaoRyi.Util.FactoryUtil;
-import com.neuedu.XiaoRyi.entity.Neu_Account;
-import com.neuedu.XiaoRyi.service.Neu_AccountService;
 
 /**
  * 管理员 管理员工 注册处理
@@ -18,7 +15,7 @@ import com.neuedu.XiaoRyi.service.Neu_AccountService;
 public class RegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	private Neu_AccountService neu_userservice=(Neu_AccountService) FactoryUtil.getInstanceObjectByName("Neu_UserService");
+	//private Neu_AccountService neu_userservice=(Neu_AccountService) FactoryUtil.getInstanceObjectByName("Neu_UserService");
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //		String user_name=request.getParameter("user[login]");

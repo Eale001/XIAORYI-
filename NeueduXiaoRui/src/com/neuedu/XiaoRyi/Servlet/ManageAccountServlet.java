@@ -9,8 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.neuedu.XiaoRyi.Util.FactoryUtil;
-import com.neuedu.XiaoRyi.entity.Neu_Account;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.neuedu.XiaoRyi.pojo.Neu_Account;
 import com.neuedu.XiaoRyi.service.Neu_AccountService;
 
 /**
@@ -21,7 +23,10 @@ import com.neuedu.XiaoRyi.service.Neu_AccountService;
 public class ManageAccountServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	private Neu_AccountService neu_accountservice=(Neu_AccountService) FactoryUtil.getInstanceObjectByName("Neu_AccountService");
+	ApplicationContext context=new ClassPathXmlApplicationContext("beans.xml");
+	Neu_AccountService neu_accountservice=(Neu_AccountService) context.getBean("autoaccountService");
+	
+	//private Neu_AccountService neu_accountservice=(Neu_AccountService) FactoryUtil.getInstanceObjectByName("Neu_AccountService");
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String msg=request.getParameter("msg");
@@ -88,7 +93,20 @@ public class ManageAccountServlet extends HttpServlet {
 			Result rs=new Result(1,account,null);
 			response.setContentType("application/JSON");
 			response.getWriter().append(rs.toString());
+		}else if("6".equals(msg)) {
+			//查询单个2
+			String fid=request.getParameter("Vid");
+			Long id=Long.parseLong(fid);
+			System.out.println(id);
+			Optional<Neu_Account> opt=neu_accountservice.findById(id);
+			Neu_Account account=opt.get();
+			System.out.println(account.getNei_empno());
+			
+			Result rs=new Result(1,account,null);
+			response.setContentType("application/JSON");
+			response.getWriter().append(rs.toString());
 		}
+		
 	}
 
 	

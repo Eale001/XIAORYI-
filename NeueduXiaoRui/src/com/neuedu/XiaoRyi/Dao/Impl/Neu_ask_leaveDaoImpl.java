@@ -210,10 +210,10 @@ public class Neu_ask_leaveDaoImpl implements Neu_ask_leaveDao {
 				leave.setAsk_leave_id(id);
 				
 				Timestamp leave_begin=rs.getTimestamp("ASK_LEAVE_TIME_BEGIN");
-				leave.setAsk_leave_begin(leave_begin.getTime());
+				if(null!=leave_begin) leave.setAsk_leave_begin(leave_begin.getTime());
 						
 				Timestamp leave_end=rs.getTimestamp("ASK_LEAVE_TIME_END");
-				leave.setAsk_leave_end(leave_end.getTime());
+				if(null!=leave_end) leave.setAsk_leave_end(leave_end.getTime());
 				
 				String leave_type=rs.getString("ASK_LEAVE_TYPE");
 				leave.setAsk_leave_type(leave_type);
@@ -229,6 +229,7 @@ public class Neu_ask_leaveDaoImpl implements Neu_ask_leaveDao {
 				
 				Long empno=rs.getLong("EMPNO");
 				leave.setEmpno(empno);
+				
 				
 				opt=Optional.of(leave);
 				
@@ -272,10 +273,10 @@ public class Neu_ask_leaveDaoImpl implements Neu_ask_leaveDao {
 				leave.setAsk_leave_id(id);
 				
 				Timestamp leave_begin=rs.getTimestamp("ASK_LEAVE_TIME_BEGIN");
-				leave.setAsk_leave_begin(leave_begin.getTime());
+				if(null!=leave_begin) leave.setAsk_leave_begin(leave_begin.getTime());
 						
 				Timestamp leave_end=rs.getTimestamp("ASK_LEAVE_TIME_END");
-				leave.setAsk_leave_end(leave_end.getTime());
+				if(null!=leave_end) leave.setAsk_leave_end(leave_end.getTime());
 				
 				String leave_type=rs.getString("ASK_LEAVE_TYPE");
 				leave.setAsk_leave_type(leave_type);
@@ -371,10 +372,10 @@ public class Neu_ask_leaveDaoImpl implements Neu_ask_leaveDao {
 				leave.setAsk_leave_id(id);
 				
 				Timestamp leave_begin=rs.getTimestamp("ASK_LEAVE_TIME_BEGIN");
-				leave.setAsk_leave_begin(leave_begin.getTime());
+				if(null!=leave_begin) leave.setAsk_leave_begin(leave_begin.getTime());
 						
 				Timestamp leave_end=rs.getTimestamp("ASK_LEAVE_TIME_END");
-				leave.setAsk_leave_end(leave_end.getTime());
+				if(null!=leave_end) leave.setAsk_leave_end(leave_end.getTime());
 				
 				String leave_type=rs.getString("ASK_LEAVE_TYPE");
 				leave.setAsk_leave_type(leave_type);
@@ -427,7 +428,7 @@ public class Neu_ask_leaveDaoImpl implements Neu_ask_leaveDao {
 					"WHERE RN>=?";
 			ps=conn.prepareStatement(sql);
 			ps.setLong(1, page*total);
-			ps.setLong(2, page*(total-1));
+			ps.setLong(2, (page-1)*total);
 			rs=ps.executeQuery();
 			while(rs.next()) {
 				Neu_Ask_Leave leave=new Neu_Ask_Leave();
@@ -435,11 +436,11 @@ public class Neu_ask_leaveDaoImpl implements Neu_ask_leaveDao {
 				Long id=rs.getLong("ASK_LEAVE_ID");
 				leave.setAsk_leave_id(id);
 				
-				Long leave_begin=rs.getLong("ASK_LEAVE_TIME_BEGIN");
-				leave.setAsk_leave_begin(leave_begin);
+				Timestamp leave_begin=rs.getTimestamp("ASK_LEAVE_TIME_BEGIN");
+				if(null!=leave_begin) leave.setAsk_leave_begin(leave_begin.getTime());
 						
-				Long leave_end=rs.getLong("ASK_LEAVE_TIME_END");
-				leave.setAsk_leave_end(leave_end);
+				Timestamp leave_end=rs.getTimestamp("ASK_LEAVE_TIME_END");
+				if(null!=leave_end) leave.setAsk_leave_end(leave_end.getTime());
 				
 				String leave_type=rs.getString("ASK_LEAVE_TYPE");
 				leave.setAsk_leave_type(leave_type);

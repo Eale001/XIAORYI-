@@ -10,8 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.neuedu.XiaoRyi.Util.FactoryUtil;
-import com.neuedu.XiaoRyi.entity.Neu_Account;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.neuedu.XiaoRyi.pojo.Neu_Account;
 import com.neuedu.XiaoRyi.service.Neu_AccountService;
 
 /**
@@ -22,7 +24,10 @@ import com.neuedu.XiaoRyi.service.Neu_AccountService;
 public class EmpLoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	private Neu_AccountService neu_accountservice=(Neu_AccountService) FactoryUtil.getInstanceObjectByName("Neu_AccountService");
+	ApplicationContext context=new ClassPathXmlApplicationContext("beans.xml");
+	Neu_AccountService neu_accountservice=(Neu_AccountService) context.getBean("autoaccountService");
+	
+	//private Neu_AccountService neu_accountservice=(Neu_AccountService) FactoryUtil.getInstanceObjectByName("Neu_AccountService");
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String userlogin=request.getParameter("userlogin");

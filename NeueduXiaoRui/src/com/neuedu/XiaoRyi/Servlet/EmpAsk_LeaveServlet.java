@@ -11,8 +11,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.neuedu.XiaoRyi.Util.FactoryUtil;
-import com.neuedu.XiaoRyi.entity.Neu_Ask_Leave;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.neuedu.XiaoRyi.pojo.Neu_Ask_Leave;
 import com.neuedu.XiaoRyi.service.Neu_ask_leaveService;
 
 /**
@@ -23,7 +25,10 @@ import com.neuedu.XiaoRyi.service.Neu_ask_leaveService;
 public class EmpAsk_LeaveServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	private Neu_ask_leaveService neu_ask_leaveservice=(Neu_ask_leaveService) FactoryUtil.getInstanceObjectByName("Neu_ask_leaveService");
+	ApplicationContext context=new ClassPathXmlApplicationContext("beans.xml");
+	Neu_ask_leaveService neu_ask_leaveservice=(Neu_ask_leaveService) context.getBean("autoleaveService");
+	
+	//private Neu_ask_leaveService neu_ask_leaveservice=(Neu_ask_leaveService) FactoryUtil.getInstanceObjectByName("Neu_ask_leaveService");
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		DateFormat format=new SimpleDateFormat("yyyy-MM-dd");
@@ -43,6 +48,8 @@ public class EmpAsk_LeaveServlet extends HttpServlet {
 			String leave_type=request.getParameter("leave_type");
 			String leave_reason=request.getParameter("leave_reason");
 			
+			Long accecpt=(long)0;
+			
 			System.out.println(leave_type);
 			System.out.println(leave_reason);
 			
@@ -55,6 +62,7 @@ public class EmpAsk_LeaveServlet extends HttpServlet {
 			leave.setAsk_leave_end(leave_endtime);
 			leave.setAsk_leave_type(leave_type);
 			leave.setAsk_leave_reason(leave_reason);
+			leave.setAsk_leave_accept(accecpt);
 			
 			neu_ask_leaveservice.add(leave);
 			

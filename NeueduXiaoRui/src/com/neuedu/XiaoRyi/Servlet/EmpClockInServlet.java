@@ -14,8 +14,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.neuedu.XiaoRyi.Util.FactoryUtil;
-import com.neuedu.XiaoRyi.entity.Neu_CLOCKIN;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.neuedu.XiaoRyi.pojo.Neu_CLOCKIN;
 import com.neuedu.XiaoRyi.service.Neu_ClockInService;
 
 /**
@@ -26,7 +28,10 @@ import com.neuedu.XiaoRyi.service.Neu_ClockInService;
 public class EmpClockInServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	private Neu_ClockInService neu_clockinservice=(Neu_ClockInService) FactoryUtil.getInstanceObjectByName("Neu_ClockInService");
+	ApplicationContext context=new ClassPathXmlApplicationContext("beans.xml");
+	Neu_ClockInService neu_clockinservice=(Neu_ClockInService) context.getBean("autoClockService");
+	
+	//private Neu_ClockInService neu_clockinservice=(Neu_ClockInService) FactoryUtil.getInstanceObjectByName("Neu_ClockInService");
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String nowtimestamp=request.getParameter("date");

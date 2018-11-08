@@ -8,8 +8,8 @@ import java.util.Optional;
 import com.neuedu.XiaoRyi.Dao.Neu_StatisticalDao;
 import com.neuedu.XiaoRyi.Util.DBUtil;
 import com.neuedu.XiaoRyi.Util.FactoryUtil;
-import com.neuedu.XiaoRyi.entity.Neu_Emp;
 import com.neuedu.XiaoRyi.entity.StatisticWork;
+import com.neuedu.XiaoRyi.pojo.Neu_Emp;
 import com.neuedu.XiaoRyi.service.Neu_EmpService;
 import com.neuedu.XiaoRyi.service.Neu_StatisticService;
 

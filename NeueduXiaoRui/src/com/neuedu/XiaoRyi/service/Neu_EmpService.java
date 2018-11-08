@@ -3,8 +3,9 @@ package com.neuedu.XiaoRyi.service;
 import java.util.List;
 import java.util.Optional;
 
-import com.neuedu.XiaoRyi.entity.Neu_Account;
-import com.neuedu.XiaoRyi.entity.Neu_Emp;
+import com.neuedu.XiaoRyi.pojo.Neu_Account;
+import com.neuedu.XiaoRyi.pojo.Neu_Emp;
+
 
 /**
  * 事务层 -- 事务管理

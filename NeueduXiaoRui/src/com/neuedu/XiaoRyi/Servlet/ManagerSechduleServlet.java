@@ -1,7 +1,6 @@
 package com.neuedu.XiaoRyi.Servlet;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -9,9 +8,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.neuedu.XiaoRyi.Util.FactoryUtil;
-import com.neuedu.XiaoRyi.entity.Neu_Ask_Leave;
-import com.neuedu.XiaoRyi.entity.Neu_CLOCKIN;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.neuedu.XiaoRyi.pojo.Neu_Ask_Leave;
+import com.neuedu.XiaoRyi.pojo.Neu_CLOCKIN;
 import com.neuedu.XiaoRyi.service.Neu_ClockInService;
 import com.neuedu.XiaoRyi.service.Neu_ask_leaveService;
 
@@ -23,16 +24,31 @@ import com.neuedu.XiaoRyi.service.Neu_ask_leaveService;
 public class ManagerSechduleServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	private Neu_ask_leaveService neu_ask_leaveservice=(Neu_ask_leaveService) FactoryUtil.getInstanceObjectByName("Neu_ask_leaveService");
-	private Neu_ClockInService neu_clockinservice=(Neu_ClockInService) FactoryUtil.getInstanceObjectByName("Neu_ClockInService");
+	ApplicationContext context=new ClassPathXmlApplicationContext("beans.xml");
+	Neu_ask_leaveService neu_ask_leaveservice=(Neu_ask_leaveService) context.getBean("autoleaveService");
+	
+	//ApplicationContext context=new ClassPathXmlApplicationContext("beans.xml");
+	Neu_ClockInService neu_clockinservice=(Neu_ClockInService) context.getBean("autoClockService");
+	
+	//private Neu_ask_leaveService neu_ask_leaveservice=(Neu_ask_leaveService) FactoryUtil.getInstanceObjectByName("Neu_ask_leaveService");
+	//private Neu_ClockInService neu_clockinservice=(Neu_ClockInService) FactoryUtil.getInstanceObjectByName("Neu_ClockInService");
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//待完善(根据时间显示请假事件 还有是否处理显示)
-		//String startin=request.getParameter("startin");
-		//String startout=request.getParameter("startout");
 		
+		String page=request.getParameter("page");
+		int p=Integer.valueOf(page);
+		
+		String total=request.getParameter("total");
+		int t=Integer.valueOf(total);
+		
+		String startin=request.getParameter("startin");
+		String startout=request.getParameter("startout");
+		
+		//待处理
 		//查询请假事件
-		List<Neu_Ask_Leave> list1=neu_ask_leaveservice.findAll();
+		
+		List<Neu_Ask_Leave> list1=neu_ask_leaveservice.findByPage(p, t);
 		
 		Result rs=new Result(1,list1,null);
 		response.setContentType("application/JSON");

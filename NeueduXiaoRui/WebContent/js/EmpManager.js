@@ -3,6 +3,28 @@ $(function(){
 	var total=3;
 	var page=1;
 	
+	//查看员工表
+	$("table").delegate(".viewacc","click",function(){
+		var Vid=$(this).attr("Vid");
+		$.ajax({
+			type:'POST',
+    		url:'manageAccountServlet.action?msg=6',
+    		data:{
+    			"Vid":Vid,
+    		},
+    		success:function(obj){
+    			if("1"==obj.code){
+    				var arr=obj.data;
+    				$("input[name='updateneu_account']").val(arr.nei_empno);
+        			$("input[name='updateneu_password']").val(arr.neu_pwd);
+        			$("input[name='updatwneu_power_level']").val(arr.neu_power_level);
+    			}
+    		},
+    		dataType:'JSON'
+		})
+	})
+		
+	
 	//修改工号表
 	$("table").delegate(".updadaacc","click",function(){
 		var fid=$(this).attr("fid");
@@ -15,7 +37,6 @@ $(function(){
     		},
     		success:function(obj){
     			if("1"==obj.code){
-    				alert(555);
     				var arr=obj.data;
     				$("input[name='updateneu_account']").val(arr.nei_empno);
         			$("input[name='updateneu_password']").val(arr.neu_pwd);
@@ -63,7 +84,6 @@ $(function(){
     		},
     		success:function(obj){
     			if("1"==obj.code){
-    				alert(555);
     				var arr=obj.data;
     				$("input[name='updateempname']").val(arr.neu_name);
         			$("input[name='updateempemail']").val(arr.neu_email);
@@ -94,7 +114,6 @@ $(function(){
 				"updateempno":$("input[name='updateempno']").val(),
     		},
     		success:function(content){
-    			alert(content);
     			if("true" == content){
     				alert("提交成功!");
     				
@@ -149,6 +168,9 @@ $(function(){
 					var $accountinfos=$("#accountinfos");
 					var arr=obj.data;
 					for (var i = 0; i < arr.length; i++) {
+						
+						$accountinfos.empty();
+						
 						var html=$(".accountinfo").html();
 						
 						var accountinfo=arr[i];
@@ -184,6 +206,8 @@ $(function(){
 					var $accountinfos=$("#accountinfos");
 					var arr=obj.data;
 					for (var i = 0; i < arr.length; i++) {
+						
+						$accountinfos.empty();
 						
 						var parent=$(".addline");
 						var child=$(".addline tr");
@@ -232,7 +256,14 @@ $(function(){
 					
 					html=html.replace("$Neu_EmpNo",accountinfo.nei_empno)
 					html=html.replace("$Neu_pwd",accountinfo.neu_pwd)
-					html=html.replace("$Neu_power_level",accountinfo.neu_power_level)
+					if(accountinfo.neu_power_level==1){
+						html=html.replace("$Neu_power_level","普通用户")
+					}else if(accountinfo.neu_power_level==2){
+						html=html.replace("$Neu_power_level","管理员")
+					}else if(accountinfo.neu_power_level==3){
+						html=html.replace("$Neu_power_level","超级管理员")
+					}
+					html=html.replace("$ID",accountinfo.m_id)
 					html=html.replace("$ID",accountinfo.m_id)
 					html=html.replace("$ID",accountinfo.m_id)
 					$accountinfos.append(html);
@@ -255,7 +286,6 @@ $(function(){
 		},
 		success:function(obj){
 			if(obj.code==1){
-				alert(1);
 				var $empInfos=$("#empInfos");
 				var arr=obj.data;
 				for (var i = 0; i < arr.length; i++) {

@@ -107,25 +107,56 @@
 				</div>
 				<div class="thing sches"id="sches">
 					<span id="nothing">暂无!</span>
-					<div class="schel">
+					<div class="">
 					<div class="table-responsive table table-hover" style="width: 850px;" >
-						<table class="table">
+						<table class="table schel">
 							<tr class="success">
 								<td class="active">申请人</td>
 								<td class="active">类型</td>
-								<td class="success">$开始时间</td>
-								<td class="warning">$结束时间</td>
-								<td class="success">$请假类型</td>
-								<td class="success">$请假原因</td>
-								<td class="warning">$准驳</td>
+								<td class="success">开始时间</td>
+								<td class="warning">结束时间</td>
+								<td class="success">请假类型</td>
+								<td class="success">请假原因</td>
+								<td class="warning">准驳</td>
 							</tr>
 						</table>
 					</div>
 				</div>
 				</div>
-				<div class="schels" hidden>
+				
+				<nav aria-label="Page navigation" style="margin: -150px 0px 0px 440px;">
+							<ul class="pagination">
+								<li>
+									<a href="#" aria-label="Previous">
+										<span aria-hidden="true">&laquo;</span>
+									</a>
+								</li>
+								<li>
+									<a id="account_1" href="#">1</a>
+								</li>
+								<li>
+									<a id="account_2" href="#">2</a>
+								</li>
+								<li>
+									<a id="account_3" href="#">3</a>
+								</li>
+								<li>
+									<a id="account_4" href="#">4</a>
+								</li>
+								<li>
+									<a id="account_5" href="#">5</a>
+								</li>
+								<li>
+									<a href="#" aria-label="Next">
+										<span aria-hidden="true">&raquo;</span>
+									</a>
+								</li>
+							</ul>
+						</nav>
+				
+				<div  hidden>
 					<div class="table-responsive table table-hover" style="width: 850px;" >
-						<table class="table">
+						<table class="table schels">
 							<tr class="success">
 								<td class="active">$申请人</td>
 								<td class="active">$请假</td>
@@ -134,8 +165,8 @@
 								<td class="success">$请假类型</td>
 								<td class="success">$请假原因</td>
 								<td class="warning">
-									<button class="btn btn-info">同意</button>
-									<button class="btn btn-info">不同意</button>
+									<button AgreeID=$ID class="btn btn-info agree">同意</button>
+									<button DISAGREEID=$ID class="btn btn-info disagree">不同意</button>
 								</td>
 							</tr>
 						</table>

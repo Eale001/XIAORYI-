@@ -9,8 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.neuedu.XiaoRyi.Util.FactoryUtil;
-import com.neuedu.XiaoRyi.entity.Neu_Emp;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.neuedu.XiaoRyi.pojo.Neu_Emp;
 import com.neuedu.XiaoRyi.service.Neu_EmpService;
 
 /**
@@ -21,7 +23,10 @@ import com.neuedu.XiaoRyi.service.Neu_EmpService;
 public class ManageUserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	private Neu_EmpService neu_empservice=(Neu_EmpService) FactoryUtil.getInstanceObjectByName("Neu_EmpService");
+	ApplicationContext context=new ClassPathXmlApplicationContext("beans.xml");
+	Neu_EmpService neu_empservice=(Neu_EmpService) context.getBean("autoempService");
+	
+	//private Neu_EmpService neu_empservice=(Neu_EmpService) FactoryUtil.getInstanceObjectByName("Neu_EmpService");
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String msg=request.getParameter("msg");

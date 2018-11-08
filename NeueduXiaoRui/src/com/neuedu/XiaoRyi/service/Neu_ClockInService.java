@@ -4,13 +4,16 @@ package com.neuedu.XiaoRyi.service;
 import java.util.List;
 import java.util.Optional;
 
-import com.neuedu.XiaoRyi.entity.Neu_CLOCKIN;
+
+import com.neuedu.XiaoRyi.pojo.Neu_CLOCKIN;
+
 
 /**
  * 事务层  --事务管理
  * @author Administrator
  *
  */
+
 public interface Neu_ClockInService {
 	
 	/**
@@ -45,4 +48,9 @@ public interface Neu_ClockInService {
 	 */
 	List<Neu_CLOCKIN> findAll();
 	
+	/**
+	 * 分页查询
+	 * @return
+	 */
+	//List<Neu_CLOCKIN> findBypage(int page,int total);
 }

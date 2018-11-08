@@ -2,7 +2,8 @@ package com.neuedu.XiaoRyi.service;
 
 import java.util.List;
 
-import com.neuedu.XiaoRyi.entity.Neu_Ask_Leave;
+import com.neuedu.XiaoRyi.pojo.Neu_Ask_Leave;
+
 
 /**
  * 事务层 -- 管理事务

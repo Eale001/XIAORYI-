@@ -9,8 +9,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.neuedu.XiaoRyi.Util.FactoryUtil;
-import com.neuedu.XiaoRyi.entity.Neu_Ask_Leave;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.neuedu.XiaoRyi.pojo.Neu_Ask_Leave;
 import com.neuedu.XiaoRyi.service.Neu_ask_leaveService;
 
 /**
@@ -21,12 +23,19 @@ import com.neuedu.XiaoRyi.service.Neu_ask_leaveService;
 public class EmpScheduleServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	private Neu_ask_leaveService neu_ask_leaveservice=(Neu_ask_leaveService) FactoryUtil.getInstanceObjectByName("Neu_ask_leaveService");
+	ApplicationContext context=new ClassPathXmlApplicationContext("beans.xml");
+	Neu_ask_leaveService neu_ask_leaveservice=(Neu_ask_leaveService) context.getBean("autoleaveService");
+	
+	//private Neu_ask_leaveService neu_ask_leaveservice=(Neu_ask_leaveService) FactoryUtil.getInstanceObjectByName("Neu_ask_leaveService");
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//待完善(根据时间显示请假事件 还有是否处理显示)
+		//待处理,根据个人ID进行分页查询
 		//String startin=request.getParameter("startin");
 		//String startout=request.getParameter("startout");
+		
+		int page=1;
+		int total=3;
 		
 		HttpSession session=request.getSession();
 		Long empno=(Long) session.getAttribute("empno");
@@ -37,7 +46,7 @@ public class EmpScheduleServlet extends HttpServlet {
 		Neu_Ask_Leave leave =new Neu_Ask_Leave();
 		leave.setEmpno(empno);
 		
-		List<Neu_Ask_Leave> list=neu_ask_leaveservice.findByExample(leave);
+		List<Neu_Ask_Leave> list=neu_ask_leaveservice.findByPage(page, total);
 		Result rs=new Result(1,list,null);
 		response.setContentType("application/JSON");
 		response.getWriter().append(rs.toString());
