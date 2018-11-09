@@ -1,6 +1,7 @@
 package com.enuedu.service.spring.test;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
@@ -18,5 +19,14 @@ public class AccountServiceSpringTest {
 		for (Neu_Account neu_Account : list) {
 			System.out.println(neu_Account.toString());
 		}
+	}
+	
+	@Test
+	public void autotest1() {
+		ApplicationContext context=new ClassPathXmlApplicationContext("beans.xml");
+		Neu_AccountService autoaccountservice=(Neu_AccountService) context.getBean("autoaccountService");
+		Optional<Neu_Account> opt=autoaccountservice.findById((long)10);
+		System.out.println(opt.get().getNei_empno());
+		System.out.println(opt.get().getNeu_pwd());
 	}
 }
