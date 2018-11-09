@@ -71,6 +71,13 @@ public class Neu_Ask_Leave {
 	public void setEmpno(Long empno) {
 		Empno = empno;
 	}
+	@Override
+	public String toString() {
+		return "Neu_Ask_Leave [ask_leave_id=" + ask_leave_id + ", ask_leave_begin=" + ask_leave_begin
+				+ ", ask_leave_end=" + ask_leave_end + ", ask_leave_type=" + ask_leave_type + ", ask_leave_reason="
+				+ ask_leave_reason + ", ask_leave_accept=" + ask_leave_accept + ", m_id=" + m_id + ", Empno=" + Empno
+				+ "]";
+	}
 	
 	
 	

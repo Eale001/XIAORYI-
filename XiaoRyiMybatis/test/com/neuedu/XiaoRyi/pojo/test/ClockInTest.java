@@ -12,7 +12,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.neuedu.XiaoRyi.Dao.Neu_ClockInMapper;
+import com.neuedu.XiaoRyi.Mapper.Neu_ClockInMapper;
 import com.neuedu.XiaoRyi.pojo.Neu_CLOCKIN;
 
 public class ClockInTest {
@@ -45,7 +45,7 @@ public class ClockInTest {
 		clockin.setNeu_empno((long)2);	
 		List<Neu_CLOCKIN> list=mapper.findByExample(clockin);
 		for (Neu_CLOCKIN neu_CLOCKIN : list) {
-			System.out.println(neu_CLOCKIN.toString());
+			System.out.println(neu_CLOCKIN.getNeu_clockin_startin());
 		}
 		session.close();
 	}
@@ -56,7 +56,12 @@ public class ClockInTest {
 		Neu_ClockInMapper mapper=session.getMapper(Neu_ClockInMapper.class);
 		List<Neu_CLOCKIN> list=mapper.findAll();
 		for (Neu_CLOCKIN neu_CLOCKIN : list) {
-			System.out.println(neu_CLOCKIN.toString());
+			System.out.println(neu_CLOCKIN.getNeu_clockin_startin());
+			System.out.println(neu_CLOCKIN.getNeu_clockin_startout());
+			System.out.println(neu_CLOCKIN.getNeu_clockin_id());
+			System.out.println(neu_CLOCKIN.getNeu_empno());
+			System.out.println(neu_CLOCKIN.getNeu_retroactivein());
+			System.out.println(neu_CLOCKIN.getNeu_retroactiveout());
 		}
 		session.close();
 	}

@@ -12,7 +12,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.neuedu.XiaoRyi.Dao.Neu_ask_leaveMapper;
+import com.neuedu.XiaoRyi.Mapper.Neu_ask_leaveMapper;
 import com.neuedu.XiaoRyi.pojo.Neu_Ask_Leave;
 
 
@@ -78,8 +78,11 @@ public class Ask_leaveTest {
 		Neu_ask_leaveMapper mapper=session.getMapper(Neu_ask_leaveMapper.class);
 		
 		List<Neu_Ask_Leave> leave= mapper.findAll();
+		System.out.println(leave.get(0).getAsk_leave_begin());
 		for (Neu_Ask_Leave neu_Ask_Leave : leave) {
-			System.out.println(neu_Ask_Leave.toString());
+			System.out.println(neu_Ask_Leave.getAsk_leave_id());
+			System.out.println(neu_Ask_Leave.getAsk_leave_begin());
+			System.out.println(neu_Ask_Leave.getAsk_leave_end());
 		}
 		
 		
@@ -92,8 +95,14 @@ public class Ask_leaveTest {
 		SqlSession session=factory.openSession();
 		Neu_ask_leaveMapper mapper=session.getMapper(Neu_ask_leaveMapper.class);
 		
-		Neu_Ask_Leave leave= mapper.findById((long)82);
+		Neu_Ask_Leave leave= mapper.findById((long)125);
 		System.out.println(leave.toString());
+		System.out.println(leave.getAsk_leave_id());
+		System.out.println(leave.getAsk_leave_begin());
+		System.out.println(leave.getAsk_leave_end());
+		System.out.println(leave.getAsk_leave_reason());
+		System.out.println(leave.getAsk_leave_type());
+		System.out.println(leave.getAsk_leave_accept());
 		
 		session.close();
 		
@@ -140,8 +149,8 @@ public class Ask_leaveTest {
 		leave.setAsk_leave_begin(new Date().getTime());
 		leave.setAsk_leave_end(new Date().getTime());
 	
-		//leave.setAsk_leave_type("shijia");
-		//leave.setAsk_leave_reason("no");
+		leave.setAsk_leave_type("shijia");
+		leave.setAsk_leave_reason("no");
 		leave.setEmpno((long)3);
 		leave.setAsk_leave_accept((long)1);
 		

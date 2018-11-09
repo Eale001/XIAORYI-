@@ -11,7 +11,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.neuedu.XiaoRyi.Dao.Neu_AccountMapper;
+import com.neuedu.XiaoRyi.Mapper.Neu_AccountMapper;
 import com.neuedu.XiaoRyi.pojo.Neu_Account;
 
 public class AccountTest {

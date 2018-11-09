@@ -11,7 +11,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.neuedu.XiaoRyi.Dao.Neu_EmpMapper;
+import com.neuedu.XiaoRyi.Mapper.Neu_EmpMapper;
 import com.neuedu.XiaoRyi.pojo.Neu_Emp;
 
 public class EmpTest {

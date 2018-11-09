@@ -16,7 +16,10 @@ public class Ask_leaveServiceSpringTest {
 		Neu_ask_leaveService neu_ask_leaveservice=(Neu_ask_leaveService) context.getBean("autoleaveService");
 		List<Neu_Ask_Leave> list=neu_ask_leaveservice.findAll();
 		for (Neu_Ask_Leave neu_ask_leave : list) {
-			System.out.println(neu_ask_leave.toString());
+			System.out.println(neu_ask_leave.getAsk_leave_id());
+			System.out.println(neu_ask_leave.getAsk_leave_begin());
+			System.out.println(neu_ask_leave.getAsk_leave_end());
+			System.out.println("----");
 		}
 	}
 }

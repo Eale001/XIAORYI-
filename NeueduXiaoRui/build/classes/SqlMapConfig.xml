@@ -10,7 +10,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	</typeAliases>
 	<!-- 加载映射文件 -->
 	<mappers> 
-		<package name="com.neuedu.XiaoRyi.Dao"/>
+		<package name="com.neuedu.XiaoRyi.Mapper"/>
 	</mappers> 
 </configuration> 
 <!-- 

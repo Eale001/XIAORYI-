@@ -8,7 +8,7 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.neuedu.XiaoRyi.Dao.Neu_AccountMapper;
+import com.neuedu.XiaoRyi.Mapper.Neu_AccountMapper;
 import com.neuedu.XiaoRyi.pojo.Neu_Account;
 
 public class MyBatisSpringTest {

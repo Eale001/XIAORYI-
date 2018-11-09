@@ -46,7 +46,7 @@
 	
 	<!-- 5.配置mapper扫描 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="com.neuedu.XiaoRyi.Dao"></property>
+		<property name="basePackage" value="com.neuedu.XiaoRyi.Mapper"></property>
 	</bean>
 	
 	

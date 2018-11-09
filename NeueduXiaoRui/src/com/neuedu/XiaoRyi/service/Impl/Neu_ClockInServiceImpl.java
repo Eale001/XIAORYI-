@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.neuedu.XiaoRyi.Dao.Neu_ClockInMapper;
+import com.neuedu.XiaoRyi.Mapper.Neu_ClockInMapper;
 import com.neuedu.XiaoRyi.pojo.Neu_CLOCKIN;
 import com.neuedu.XiaoRyi.service.Neu_ClockInService;
 

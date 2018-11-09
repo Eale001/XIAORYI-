@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.neuedu.XiaoRyi.Dao.Neu_ask_leaveMapper;
+import com.neuedu.XiaoRyi.Mapper.Neu_ask_leaveMapper;
 import com.neuedu.XiaoRyi.pojo.Neu_Ask_Leave;
 import com.neuedu.XiaoRyi.service.Neu_ask_leaveService;
 

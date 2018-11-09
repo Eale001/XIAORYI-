@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.neuedu.XiaoRyi.Dao.Neu_AccountMapper;
+import com.neuedu.XiaoRyi.Mapper.Neu_AccountMapper;
 import com.neuedu.XiaoRyi.pojo.Neu_Account;
 import com.neuedu.XiaoRyi.service.Neu_AccountService;
 
