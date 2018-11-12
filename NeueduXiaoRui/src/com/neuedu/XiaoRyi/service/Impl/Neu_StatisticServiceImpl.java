@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 import com.neuedu.XiaoRyi.Dao.Neu_StatisticalDao;
 import com.neuedu.XiaoRyi.Util.DBUtil;
 import com.neuedu.XiaoRyi.Util.FactoryUtil;
@@ -16,8 +19,9 @@ import com.neuedu.XiaoRyi.service.Neu_StatisticService;
 public class Neu_StatisticServiceImpl implements Neu_StatisticService {
 	
 	private Neu_StatisticalDao neu_statisticaldao=(Neu_StatisticalDao) FactoryUtil.getInstanceObjectByName("Neu_StatisticalDao");
-	private Neu_EmpService neu_empservice=(Neu_EmpService) FactoryUtil.getInstanceObjectByName("Neu_EmpService");
-	
+	//private Neu_EmpService neu_empservice=(Neu_EmpService) FactoryUtil.getInstanceObjectByName("Neu_EmpService");
+	ApplicationContext context=new ClassPathXmlApplicationContext("beans.xml");
+	Neu_EmpService neu_empservice=(Neu_EmpService) context.getBean("autoempService");
 	@Override
 	public List<StatisticWork> findAll(String startin, String startout) {
 		Connection conn=DBUtil.getOracleConnection();

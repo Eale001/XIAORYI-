@@ -25,8 +25,8 @@ public class ClockInServiceSpringTest {
 		ApplicationContext context=new ClassPathXmlApplicationContext("beans.xml");
 		Neu_ClockInService neu_clockinservice=(Neu_ClockInService) context.getBean("autoClockService");
 		Neu_CLOCKIN clockin=new Neu_CLOCKIN();
-		clockin.setNeu_clockin_startin(new Date().getTime());
-		clockin.setNeu_clockin_startout(new Date().getTime());
+		clockin.setNeu_retroactivein(new Date().getTime());
+		clockin.setNeu_retroactiveout(new Date().getTime());
 		clockin.setNeu_empno((long)3);
 		
 		neu_clockinservice.add(clockin);

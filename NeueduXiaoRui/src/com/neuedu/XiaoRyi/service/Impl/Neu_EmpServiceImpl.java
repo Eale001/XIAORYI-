@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.neuedu.XiaoRyi.Mapper.Neu_EmpMapper;
+import com.neuedu.XiaoRyi.common.Page;
 import com.neuedu.XiaoRyi.pojo.Neu_Account;
 import com.neuedu.XiaoRyi.pojo.Neu_Emp;
 import com.neuedu.XiaoRyi.service.Neu_EmpService;
@@ -61,10 +62,9 @@ public class Neu_EmpServiceImpl implements Neu_EmpService {
 	}
 
 	@Override
-	public List<Neu_Emp> findByPage(String page, String total) {
-		Integer p=Integer.parseInt(page);
-		Integer t=Integer.parseInt(total);
-		return neu_empdao.findByPage(p, t);
+	public List<Neu_Emp> findByPage(Page page) {
+		
+		return neu_empdao.findByPage(page);
 	}
 
 }

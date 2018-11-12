@@ -125,9 +125,11 @@ $(function(){
 			if(obj.code==1){
 				
 				var $sches=$(".schel");
+				var $restroactive=$(".restroactive");
 				var arr=obj.data;
 				for (var i = 0; i < arr.length; i++) {
 					var html=$(".schels").html();
+					var html1=$(".restroactives").html();
 					
 					var clockinfo=arr[i];
 					
@@ -141,7 +143,15 @@ $(function(){
 					html=html.replace("$ID",clockinfo.ask_leave_id)
 					//html=html.replace("$准驳",clockinfo.ask_leave_accept);
 					
+					html1=html1.replace("$补签人",clockinfo.empno);
+					html1=html1.replace("$补签","补签");
+					html1=html1.replace("$开始",datetimeFormat_2(clockinfo.neu_retroactivein));
+					html1=html1.replace("$结束",datetimeFormat_2(clockinfo.neu_retroactiveout));
+					html1=html1.replace("$ID",clockinfo.ask_leave_id)
+					html1=html1.replace("$ID",clockinfo.ask_leave_id)
+					
 					$sches.append(html);
+					$restroactive.append(html1);
 				}
 				$("#nothing").hide();
 			}

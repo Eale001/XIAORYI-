@@ -2,8 +2,8 @@ package com.neuedu.XiaoRyi.Mapper;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Param;
 
+import com.neuedu.XiaoRyi.common.Page;
 import com.neuedu.XiaoRyi.pojo.Neu_Account;
 
 
@@ -65,6 +65,6 @@ public interface Neu_AccountMapper {
 	 * @param conn
 	 * @return
 	 */
-	List<Neu_Account> findByPage(@Param("page")int page,@Param("total")int total);
+	List<Neu_Account> findByPage(Page page);
 	
 }

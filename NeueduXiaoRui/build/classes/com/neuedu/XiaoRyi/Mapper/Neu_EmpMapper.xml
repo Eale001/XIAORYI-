@@ -115,13 +115,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 
 	<!-- 分页查询 -->
-	<select id="findByPage" resultType="com.neuedu.XiaoRyi.pojo.Neu_Emp">
+	<select id="findByPage" parameterType="com.neuedu.XiaoRyi.common.Page" resultType="com.neuedu.XiaoRyi.pojo.Neu_Emp">
 		SELECT
 		RN,NEU_ID,NEU_NAME,NEU_EMAIL,NEU_TEL,NEU_ADDRE,NEU_AGE,NEU_GENDER,NEU_EMPNO,NEU_DELETE
 		FROM (SELECT ROWNUM
 		RN,NEU_ID,NEU_NAME,NEU_EMAIL,NEU_TEL,NEU_ADDRE,NEU_AGE,NEU_GENDER,NEU_EMPNO,NEU_DELETE
 		FROM NEU_EMP)
-		WHERE RN BETWEEN (#{page}-1)*(#{total}+1) AND (#{page})*(#{total})
+		WHERE RN BETWEEN (#{startIndex}+1) AND #{endIndex}
 
 
 	</select>

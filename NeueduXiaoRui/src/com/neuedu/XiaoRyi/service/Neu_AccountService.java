@@ -3,6 +3,7 @@ package com.neuedu.XiaoRyi.service;
 import java.util.List;
 import java.util.Optional;
 
+import com.neuedu.XiaoRyi.common.Page;
 import com.neuedu.XiaoRyi.pojo.Neu_Account;
 
 
@@ -65,5 +66,5 @@ public interface Neu_AccountService {
 	 * 分页查询
 	 * @return
 	 */
-	List<Neu_Account> findPage(String page,String total);
+	List<Neu_Account> findPage(Page page);
 }

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.neuedu.XiaoRyi.common.Page;
 import com.neuedu.XiaoRyi.pojo.Neu_Account;
 import com.neuedu.XiaoRyi.service.Neu_AccountService;
 
@@ -33,9 +34,13 @@ public class ManageAccountServlet extends HttpServlet {
 		System.out.println(msg);
 		if("1".equals(msg)) {
 			//查找
-			String page=request.getParameter("page");
-			String total=request.getParameter("total");
-			List<Neu_Account> list=neu_accountservice.findPage(page, total);
+			String p=request.getParameter("page");
+			String t=request.getParameter("total");
+			Page page=new Page();
+			page.setPageSize(Integer.parseInt(t));
+			page.setCurrentPage(Integer.parseInt(p));
+			
+			List<Neu_Account> list=neu_accountservice.findPage(page);
 			
 			Result rs=new Result(1,list,null);
 			response.setContentType("application/JSON");

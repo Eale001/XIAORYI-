@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.neuedu.XiaoRyi.Mapper.Neu_AccountMapper;
+import com.neuedu.XiaoRyi.common.Page;
 import com.neuedu.XiaoRyi.pojo.Neu_Account;
 import com.neuedu.XiaoRyi.service.Neu_AccountService;
 
@@ -99,10 +100,9 @@ public class Neu_AccountServiceImpl implements Neu_AccountService {
 	}
 
 	@Override
-	public List<Neu_Account> findPage(String page, String total) {
-		Integer p=Integer.parseInt(page);
-		Integer t=Integer.parseInt(total);
-		return neu_accountdao.findByPage(p, t);
+	public List<Neu_Account> findPage(Page page) {
+		
+		return neu_accountdao.findByPage(page);
 	}
 
 }

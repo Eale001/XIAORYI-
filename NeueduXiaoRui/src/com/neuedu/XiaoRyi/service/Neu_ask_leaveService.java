@@ -2,6 +2,7 @@ package com.neuedu.XiaoRyi.service;
 
 import java.util.List;
 
+import com.neuedu.XiaoRyi.common.Page;
 import com.neuedu.XiaoRyi.pojo.Neu_Ask_Leave;
 
 
@@ -45,10 +46,18 @@ public interface Neu_ask_leaveService {
 	List<Neu_Ask_Leave> findAll();
 	
 	/**
-	 * 分页查询
+	 * 分页查询emp
 	 * @param page
 	 * @param total
 	 * @return
 	 */
-	List<Neu_Ask_Leave> findByPage(int page,int total);
+	List<Neu_Ask_Leave> findByPageEmp(Page page,Neu_Ask_Leave leave);
+	
+	/**
+	 * 分页查询account
+	 * @param page
+	 * @param total
+	 * @return
+	 */
+	List<Neu_Ask_Leave> findByPageAccount(int page,int total);
 }

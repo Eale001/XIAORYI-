@@ -12,11 +12,12 @@ import javax.servlet.http.HttpSession;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.neuedu.XiaoRyi.common.Page;
 import com.neuedu.XiaoRyi.pojo.Neu_Ask_Leave;
 import com.neuedu.XiaoRyi.service.Neu_ask_leaveService;
 
 /**
- * 客户端  响应 待批准的事
+ * 客户端  响应 申请的事
  * @author Administrator
  *
  */
@@ -34,8 +35,8 @@ public class EmpScheduleServlet extends HttpServlet {
 		//String startin=request.getParameter("startin");
 		//String startout=request.getParameter("startout");
 		
-		int page=1;
-		int total=3;
+//		int page=1;
+//		int total=3;
 		
 		HttpSession session=request.getSession();
 		Long empno=(Long) session.getAttribute("empno");
@@ -46,7 +47,11 @@ public class EmpScheduleServlet extends HttpServlet {
 		Neu_Ask_Leave leave =new Neu_Ask_Leave();
 		leave.setEmpno(empno);
 		
-		List<Neu_Ask_Leave> list=neu_ask_leaveservice.findByPage(page, total);
+		Page page=new Page();
+		page.setPageSize(5);
+		page.setCurrentPage(1);
+		
+		List<Neu_Ask_Leave> list=neu_ask_leaveservice.findByPageEmp(page, leave);
 		Result rs=new Result(1,list,null);
 		response.setContentType("application/JSON");
 		response.getWriter().append(rs.toString());

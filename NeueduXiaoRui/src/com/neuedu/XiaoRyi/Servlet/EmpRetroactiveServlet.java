@@ -9,6 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -17,7 +18,7 @@ import com.neuedu.XiaoRyi.pojo.Neu_CLOCKIN;
 import com.neuedu.XiaoRyi.service.Neu_ClockInService;
 
 /**
- * 客户端 处理 补签 响应
+ * 客户端  补签 响应
  * @author Administrator
  *
  */
@@ -33,6 +34,8 @@ public class EmpRetroactiveServlet extends HttpServlet {
 		DateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm");
 		try {
 			
+			HttpSession session=request.getSession();
+			Long empno=(Long) session.getAttribute("empno");
 			
 			String restroactivein=request.getParameter("restroactivein").trim();
 			String restroactiveinH=request.getParameter("restroactiveinH").trim();
@@ -53,12 +56,13 @@ public class EmpRetroactiveServlet extends HttpServlet {
 			
 			Neu_CLOCKIN clockin=new Neu_CLOCKIN();
 			//差一个id
-			clockin.setNeu_empno((long)11);
+			System.out.println(empno);
+			clockin.setNeu_empno(empno);
 			clockin.setNeu_retroactivein(restroactiveintime);
 			clockin.setNeu_retroactiveout(restroactiveouttime);
 			
 
-			neu_clockinservice.update(clockin);
+			neu_clockinservice.add(clockin);
 			response.getWriter().append("3");
 			
 			

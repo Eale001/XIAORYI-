@@ -173,7 +173,7 @@
   </filter>
   <filter-mapping>
     <filter-name>sessionFilter</filter-name>
-    <url-pattern>*.doo</url-pattern>
+    <url-pattern>*.do</url-pattern>
   </filter-mapping>
   <filter>
     <display-name>managerSessionFilter</display-name>
@@ -182,7 +182,7 @@
   </filter>
   <filter-mapping>
     <filter-name>managerSessionFilter</filter-name>
-    <url-pattern>*.actionl</url-pattern>
+    <url-pattern>*.action</url-pattern>
   </filter-mapping>
   <servlet>
     <description></description>

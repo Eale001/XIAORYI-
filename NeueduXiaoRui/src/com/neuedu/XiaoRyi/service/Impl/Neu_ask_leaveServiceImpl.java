@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.neuedu.XiaoRyi.Mapper.Neu_ask_leaveMapper;
+import com.neuedu.XiaoRyi.common.Page;
 import com.neuedu.XiaoRyi.pojo.Neu_Ask_Leave;
 import com.neuedu.XiaoRyi.service.Neu_ask_leaveService;
 
@@ -46,9 +47,16 @@ public class Neu_ask_leaveServiceImpl implements Neu_ask_leaveService {
 		return neu_ask_leavedao.findAll();
 	}
 
+
 	@Override
-	public List<Neu_Ask_Leave> findByPage(int page, int total) {		
-		return neu_ask_leavedao.findByPage(page, total);
+	public List<Neu_Ask_Leave> findByPageEmp(Page page, Neu_Ask_Leave leave) {
+		return neu_ask_leavedao.findByPageEmp(page, leave);
+	}
+
+	@Override
+	public List<Neu_Ask_Leave> findByPageAccount(int page, int total) {
+		
+		return neu_ask_leavedao.findByPageAccout(page, total);
 	}
 
 }

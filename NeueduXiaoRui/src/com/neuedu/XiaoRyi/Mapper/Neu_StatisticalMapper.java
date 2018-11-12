@@ -1,6 +1,5 @@
 package com.neuedu.XiaoRyi.Mapper;
 
-import java.sql.Connection;
 import java.util.Optional;
 
 import com.neuedu.XiaoRyi.pojo.StatisticWork;
@@ -18,30 +17,30 @@ public interface Neu_StatisticalMapper {
 	 * 实到
 	 * @return
 	 */
-	Optional<StatisticWork> findrealitywork(Long empno,String startin,String startout,Connection conn);
+	Optional<StatisticWork> findrealitywork(Long empno,String startin,String startout);
 	
 	
 	/**
 	 * 迟到
 	 * @return
 	 */
-	Optional<StatisticWork> findlatework(Long empno,String startin,String startout,Connection conn);
+	Optional<StatisticWork> findlatework(Long empno,String startin,String startout);
 	
 	/**
 	 * 早退
 	 * @return
 	 */
-	Optional<StatisticWork> findearlywork(Long empno,String startin,String startout,Connection conn);
+	Optional<StatisticWork> findearlywork(Long empno,String startin,String startout);
 	
 	/**
 	 * 缺勤
 	 * @return
 	 */
-	Optional<StatisticWork> findabsencework(Long empno,String startin,String startout,Connection conn);
+	Optional<StatisticWork> findabsencework(Long empno,String startin,String startout);
 	
 	/**
 	 * 请假
 	 * @return
 	 */
-	Optional<StatisticWork> findaskleavework(Long empno,String startin,String startout,Connection conn);
+	Optional<StatisticWork> findaskleavework(Long empno,String startin,String startout);
 }

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.neuedu.XiaoRyi.common.Page;
 import com.neuedu.XiaoRyi.pojo.Neu_Ask_Leave;
 
 
@@ -60,12 +61,21 @@ public interface Neu_ask_leaveMapper {
 	List<Neu_Ask_Leave> findByExample(Neu_Ask_Leave leave);
 
 	/**
-	 * 分页查询
+	 * 分页查询emp
 	 * 
 	 * @param user
 	 * @param conn
 	 * @return
 	 */
-	List<Neu_Ask_Leave> findByPage(@Param("page")int page,@Param("total") int total);
+	List<Neu_Ask_Leave> findByPageEmp(@Param("page")Page page,@Param("leave") Neu_Ask_Leave leave);
+	
+	/**
+	 * 分页查询account
+	 * 
+	 * @param user
+	 * @param conn
+	 * @return
+	 */
+	List<Neu_Ask_Leave> findByPageAccout(@Param("page")int page,@Param("total") int total);
 
 }

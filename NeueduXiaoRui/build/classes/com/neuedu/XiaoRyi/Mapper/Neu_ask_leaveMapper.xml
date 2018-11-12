@@ -78,8 +78,28 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		FROM NEU_ASK_LEAVE_C
 	</select>
 	
-	<!-- 分页查询 -->
-	<select id="findByPage" resultMap="map">
+	<!-- 分页查询emp -->
+	<select id="findByPageEmp" resultMap="map">
+	SELECT RN,ASK_LEAVE_ID,ASK_LEAVE_TIME_BEGIN,ASK_LEAVE_TIME_END,ASK_LEAVE_TYPE,ASK_LEAVE_REASON,ASK_LEAVE_ACCEPT,M_ID,EMPNO 
+		FROM (SELECT ROWNUM RN,ASK_LEAVE_ID,ASK_LEAVE_TIME_BEGIN,ASK_LEAVE_TIME_END,ASK_LEAVE_TYPE,ASK_LEAVE_REASON,ASK_LEAVE_ACCEPT,M_ID,EMPNO 
+			FROM NEU_ASK_LEAVE_C )
+		<where>
+			<if test="page.startIndex !=null and page.endIndex !=null ">
+				AND RN BETWEEN (#{page.startIndex}+1) AND #{page.endIndex}
+			</if>
+		
+			<if test="leave.Empno !=null ">
+				AND EMPNO=#{leave.Empno,jdbcType=BIGINT}
+			</if>
+		
+			<if test="leave.ask_leave_accept !=null ">
+				AND ASK_LEAVE_ACCEPT=#{leave.ask_leave_accept,jdbcType=BIGINT}
+			</if>
+		</where>
+	</select>
+	
+	<!-- 分页查询account -->
+	<select id="findByPageAccout" resultMap="map">
 	SELECT RN,ASK_LEAVE_ID,ASK_LEAVE_TIME_BEGIN,ASK_LEAVE_TIME_END,ASK_LEAVE_TYPE,ASK_LEAVE_REASON,ASK_LEAVE_ACCEPT,M_ID,EMPNO 
 		FROM (SELECT ROWNUM RN,ASK_LEAVE_ID,ASK_LEAVE_TIME_BEGIN,ASK_LEAVE_TIME_END,ASK_LEAVE_TYPE,ASK_LEAVE_REASON,ASK_LEAVE_ACCEPT,M_ID,EMPNO 
 			FROM NEU_ASK_LEAVE_C )

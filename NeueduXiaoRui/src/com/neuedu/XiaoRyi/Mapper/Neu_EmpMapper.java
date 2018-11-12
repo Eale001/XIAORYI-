@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.neuedu.XiaoRyi.common.Page;
 import com.neuedu.XiaoRyi.pojo.Neu_Emp;
 
 
@@ -66,6 +67,6 @@ public interface Neu_EmpMapper {
 	 * @param conn
 	 * @return
 	 */
-	List<Neu_Emp> findByPage(@Param("page")int page,@Param("total") int total);
+	List<Neu_Emp> findByPage(Page page);
 
 }
